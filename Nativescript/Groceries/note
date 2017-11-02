@@ -1,0 +1,21 @@
+https://angular.io/api/http/Http
+https://angular.io/guide/http
+https://angular.io/guide/router
+https://nodejs.org/api/modules.html#modules_folders_as_modules
+https://github.com/NathanWalker/angular-seed-advanced
+https://angular.io/guide/lifecycle-hooks
+https://docs.nativescript.org/angular/ui/animation
+https://docs.nativescript.org/angular/ui/animation-examples
+
+call javascript object
+var x = [1,2,3];
+
+easiest to select all
+
+console.log(...x);
+
+--
+
+perbedaan extend dan implement
+extend : mewarisi class dengan method pada class lain
+implement : memanggil fungsi class lain yg dibutuhkan sehingga minimal harus ada 1 penerapan fungsi
