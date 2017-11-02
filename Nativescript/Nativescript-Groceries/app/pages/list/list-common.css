@@ -1,5 +1,5 @@
 .add-bar {
-  background-color: #CB1D00;
+  background-color: #ecf0f1;
   padding: 5 10;
 }
 .add-bar Image {
@@ -9,7 +9,7 @@
   margin-right: 5;
 }
 TextField {
-  color: white;
+  color:#34495e;
 }
 Listview {
   opacity: 0;

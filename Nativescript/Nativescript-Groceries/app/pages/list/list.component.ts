@@ -1,8 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { TextField } from "ui/text-field";
 
+import { isIOS } from 'platform';
+import { topmost} from 'ui/frame';
+
 import { Grocery } from "../../shared/grocery/grocery";
 import { GroceryListService } from "../../shared/grocery/grocery-list.service";
+
+import * as SocialShare from "nativescript-social-share";
 
 @Component({
     selector: 'list',
@@ -22,7 +27,9 @@ export class ListComponent implements OnInit{
     listLoaded = false;
 
     constructor(private groceryListService: GroceryListService) {
-
+        if(isIOS) {
+            topmost().ios.controller.navigationBar.barstyle = 1;
+        }
     }
 
     ngOnInit() {
@@ -61,5 +68,13 @@ export class ListComponent implements OnInit{
                 this.grocery = "";
             }
        );
+    }
+
+    share() {
+        let listString = this.groceryList
+            .map(grocery => grocery.name)
+            .join(", ")
+            .trim();
+        SocialShare.shareText(listString);
     }
 }
