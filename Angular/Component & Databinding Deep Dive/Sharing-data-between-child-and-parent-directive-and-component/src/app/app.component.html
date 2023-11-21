@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card mt-5">
+        <div class="card-header">Pass data from parent to child</div>
+        <div class="card-body">
+
+          <div class="card mb-3 mt-3">
+            <div class="card-header">Parent</div>
+            <div class="card-body">
+              <label for="message">Message</label>
+              <input type="text" id="message" class="form-control" placeholder="" [(ngModel)]="message" #messageContent>
+              <button class="btn btn-primary btn-sm mt-3" [disabled]="!message"
+                (click)="sendMessage(messageContent.value)">Send</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">Child</div>
+            <div class="card-body">
+              <app-parent-to-child [messages]="messages"></app-parent-to-child>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card mt-5">
+        <div class="card-header">Pass data from child to parent</div>
+        <div class="card-body">
+          <div class="card mb-3 mt-3">
+            <div class="card-header">Child</div>
+            <div class="card-body">
+              <app-child-to-parent (pushServers)="addServer($event)"></app-child-to-parent>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">Parent</div>
+            <div class="card-body">
+              <ul>
+                <li *ngFor="server of servers">{{server}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
