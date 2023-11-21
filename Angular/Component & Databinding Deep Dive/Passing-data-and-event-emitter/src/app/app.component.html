@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header">Combine Passing Data Parent to Child and Child to Parent</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">Form</div>
+            <div class="card-body">
+              <app-form (postData)="onReceivedBooks($event)"></app-form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">Table</div>
+            <div class="card-body">
+              <app-table [receivedBooks]="booksData"></app-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

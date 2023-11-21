@@ -1,0 +1,8 @@
+<label for="bookName">Book Name</label>
+<input type="text" class="form-control" [(ngModel)]="bookName" #book_name>
+<label for="bookName" class="mt-3">Category</label>
+<select class="form-control" (change)="onSelectCategories(book_category.value)" #book_category>
+    <option value="" selected>- Select One -</option>
+    <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+</select>
+<button class="btn btn-primary btn-sm mt-3" [disabled]="!bookCategory || !bookName" (click)="onAddBook(book_name.value, book_category.value)">Add Book</button>
