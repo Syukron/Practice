@@ -19,6 +19,5 @@ export class AppComponent {
   servers = []
   addServer(name: string) {
     this.servers.push(name)
-    alert(name)
   }
 }
