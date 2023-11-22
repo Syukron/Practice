@@ -49,3 +49,48 @@ onSubmitData(name: string) {
 <input type="text" #name>
 <button (click)="onSubmitData(name.value)">
 ```
+## View encapsulation
+```
+@component({
+    encapsulation: ViewEncapsulation.ShadowDom
+})
+
+- ShadowDom
+- Emulated
+- None
+
+```
+
+## Projecting content into components using ng-content
+```
+#main view 
+<app-child>
+    <p>Hello World</p>
+</app-child>
+
+#secondary view
+<ng-content></ng-content>
+```
+
+## Some way to get input data from view 
+#### 1. Two way data binding 
+```
+<input type="text" [(ngModel)]="bookName">
+```
+#### 2. Local reference
+```
+<input type="text" #form_book_name>
+<button (click)="onSaveData(form_book_name.value)"></button>
+```
+#### 3. View Child
+```
+#component.html
+<input type="text" #form_book_name>
+
+#component.ts
+@ViewChild('form_book_name') form_book_name: ElementRef
+onSaveBook() {
+    let bookName = this.form_book_name.nativeElement.value
+}
+
+```

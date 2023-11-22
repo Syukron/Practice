@@ -1,4 +1,6 @@
 import { EventEmitter } from '@angular/core';
+import { ElementRef } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Output } from '@angular/core';
 import { Component } from '@angular/core';
 
@@ -10,6 +12,7 @@ import { Component } from '@angular/core';
 export class CockpitComponent {
   @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>()
   @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>()
+  @ViewChild('form_server_name') form_server_name: ElementRef
 
   serverName = ''
   serverContent = ''

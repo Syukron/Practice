@@ -6,5 +6,10 @@
 		</div>
 	</div>
 
-	<app-server-element [srvElement]="serverElement"></app-server-element>
+	<app-server-element [srvElement]="serverElement" *ngFor="let server of serverElement">
+		<div class="card mt-3">
+			<div class="card-header text-white" [ngClass]="server.type == 'server' ? 'text-bg-success' : 'text-bg-primary'">{{server.name}}</div>
+			<div class="card-body">{{server.content}}</div>
+		</div>
+	</app-server-element>
 </div> 
