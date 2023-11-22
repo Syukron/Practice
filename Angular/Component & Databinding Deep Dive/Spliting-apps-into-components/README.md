@@ -1,27 +1,51 @@
-# SplitingAppsIntoComponents
+## Property and event binding
+```
+@Input() data: ''
+@Input() data: string
+@Input() data: {name: string, content: string}
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+@Output() dataInserted = new EventEmitter<string>()
+@Output() dataInserted = new EventEmitter<any>()
+@Output() dataInserted = new EventEmitter<{name: string, content: string}>()
+```
 
-## Development server
+## Binding to custom property
+#### Parent to child 
+```
+#child component.ts
+@Input() postedData: ''
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#parent component.html
+<app child [postedData]="childFunction()">
+```
 
-## Code scaffolding
+#### Child to parent
+```
+#child component.ts
+@Output() dataCreated: new EventEmitter<string>()
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+onSubmitData(name: string) {
+    this.dataCreated.emit(name)
+}
 
-## Build
+#parent component.html
+<app parent (dataCreated)="parentFunction($event)">
+```
+## Assigning alias to custom property
+```
+#component.ts
+@Output('dtCreated') dataCreated = new EventEmitter<string>()
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+onSubmitData(name: string) {
+    this.dataCreated.emit(name)
+}
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#component.html
+<app-parent (dtCreated)="parentFunction()">
+```
+## Local reference
+```
+#component.html
+<input type="text" #name>
+<button (click)="onSubmitData(name.value)">
+```

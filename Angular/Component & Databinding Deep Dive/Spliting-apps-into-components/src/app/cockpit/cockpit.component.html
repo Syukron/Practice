@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="serverName">Server Name:</label>
+    <input type="text" id="serverName" class="form-control" [(ngModel)]="serverName" #form_server_name>
+</div>
+<div class="form-group mt-3">
+    <label for="serverContent">Server Content:</label>
+    <input type="text" id="serverContent" class="form-control" [(ngModel)]="serverContent" #form_server_content>
+</div>
+<div class="d-flex mt-3">
+    <button class="btn btn-success btn-sm me-1" (click)="onAddServer()">Add Server</button> 
+    <button class="btn btn-primary btn-sm" (click)="onAddBlueprint()">Add Blueprint</button>
+</div>

@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Spliting-apps-into-components';
+  serverElement = [{type: 'server', name: 'Test server', content: 'just a test'}]
+
+  onServerReceived(serverData: {serverName: string, serverContent: string}) {
+    this.serverElement.push({
+      type: 'server',
+      name: serverData.serverName,
+      content: serverData.serverContent
+    })
+  }
+
+  onBlueprintReceived(serverData: {serverName: string, serverContent: string}) {
+    this.serverElement.push({
+      type: 'blueprint',
+      name: serverData.serverName,
+      content: serverData.serverContent
+    })
+  }
 }

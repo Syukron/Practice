@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormServerComponent } from './form-server/form-server.component';
-import { LogServerComponent } from './log-server/log-server.component';
 import { FormsModule } from '@angular/forms';
+import { CockpitComponent } from './cockpit/cockpit.component';
+import { ServerElementComponent } from './server-element/server-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormServerComponent,
-    LogServerComponent
+    CockpitComponent,
+    ServerElementComponent
   ],
   imports: [
     BrowserModule, FormsModule

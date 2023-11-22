@@ -1,5 +1,10 @@
-<div class="container">
-	<app-form-server></app-form-server>
-	<hr>
-	<app-log-server *ng-for="let server of servers"></app-log-server>
-</div>
+<div class="container mt-3" style="max-width: 720px;">
+	<div class="card">
+		<div class="card-header">Form Server</div>
+		<div class="card-body">
+			<app-cockpit (serverCreated)="onServerReceived($event)" (bpCreated)="onBlueprintReceived($event)"></app-cockpit>
+		</div>
+	</div>
+
+	<app-server-element [srvElement]="serverElement"></app-server-element>
+</div> 
