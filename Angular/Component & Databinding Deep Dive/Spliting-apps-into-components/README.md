@@ -72,6 +72,18 @@ onSubmitData(name: string) {
 <ng-content></ng-content>
 ```
 
+## Component lifecycle
+| Lifecycle | Description |
+| ----------- | ----------- |
+| ngOnChanges | Called after a bound input property changes |
+| ngOnInit | Called once the component is initialized |
+| ngDoCheck | Called during every change detection run |
+| ngAfterContentInit | Called after content (ng-content) has been projected into view |
+| ngAfterContentChecked | Called every time the projected content has been checked |
+| ngAfterViewInit | Called after the component’s view (and child views) has been initialized |
+| ngAfterViewChecked | Called every time the view (and child views) have been checked |
+| ngOnDestroy | Called once the component is about to be destroyed |
+
 ## Some way to get input data from view 
 #### 1. Two way data binding 
 ```

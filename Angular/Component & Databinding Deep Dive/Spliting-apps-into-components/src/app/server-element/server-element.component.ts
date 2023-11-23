@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { Input, SimpleChanges } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,4 +9,16 @@ import { Component } from '@angular/core';
 export class ServerElementComponent {
   @Input('srvElement') element: {type: string, name: string, content: string}
 
+  constructor() {
+    console.log('constructor called')
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges called')
+    console.log(changes)
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit called')
+  }
 }
