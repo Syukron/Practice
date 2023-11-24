@@ -1,82 +1,21 @@
-//our root app component
-import {Component, NgModule, ViewContainerRef, TemplateRef, Input, ContentChild} from '@angular/core'
-import {BrowserModule} from '@angular/platform-browser'
+import { Component, ContentChild, ContentChildren, ElementRef, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: 'my-inc',
-  template: ''
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class Inc {
-  
-  @Input() tmpl;
-  
-  @Input() data;
-  
-  constructor(private _view: ViewContainerRef) {}
-  
-  ngOnInit() {
-    console.log(this.tmpl);
-    if (this.tmpl) {
-      this._view.createEmbeddedView(this.tmpl, {'$implicit': this.data});
-    }
+export class AppComponent {
+  @ContentChild('form_name') form_name:ElementRef
+  @ContentChildren('form_book_name') form_book: ElementRef
+
+  title = 'view-child';
+
+  submitName() {
+    alert(this.form_name)
+  }
+
+  submitBook() {
+    console.log(this.form_book)
   }
 }
-
-@Component({
-  selector: 'my-comp',
-  template: `
-    <div *ngIf="true">
-      <template ngFor let-i [ngForOf]="data">
-        <div>
-          <button (click)="toggle(i)">toggle-{{i}}</button>
-          <span *ngIf="show[i]">
-            <my-inc [tmpl]="tmpl" [data]="{val: i}"></my-inc>
-          </span>
-        </div>
-      </template>
-    </div>`
-})
-export class Comp {
-  data = [1, 2, 3];
-  show = [false, false, false];
-
-  @ContentChild(TemplateRef) tmpl;
-  
-  ngAfterContentInit() {
-    console.log(this.tmpl);
-  }
-  
-  toggle(i) {
-    this.show[i] = !this.show[i];
-  }
-  
-}
-
-@Component({
-  selector: 'my-app',
-  template: `
-    <div>
-      <h2>Hello {{name}}</h2>
-      <my-comp>
-        <template let-data>
-          <span *ngIf="true">{{data | json}}</span>
-        </template>
-      </my-comp>
-    </div>
-  `,
-})
-export class App {
-  name:string;
-  
-  constructor() {
-    this.name = 'Angular2'
-  }
-  
-}
-
-@NgModule({
-  imports: [ BrowserModule ],
-  declarations: [ App, Comp, Inc ],
-  bootstrap: [ App ]
-})
-export class AppModule {}
