@@ -1,31 +1,15 @@
-import {Component, Directive, Input, ViewChild} from '@angular/core';
-
-@Directive({selector: 'pane'})
-export class Pane {
-  @Input() id!: string;
-}
+import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <pane id="1" *ngIf="shouldShow"></pane>
-    <pane id="2" *ngIf="!shouldShow"></pane>
-
-    <button (click)="toggle()">Toggle</button>
-
-    <div>Selected: {{selectedPane}}</div>
-  `,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  @ViewChild(Pane)
-  set pane(v: Pane) {
-    setTimeout(() => {
-      this.selectedPane = v.id;
-    }, 0);
-  }
-  selectedPane: string = '';
-  shouldShow = true;
-  toggle() {
-    this.shouldShow = !this.shouldShow;
+  @ViewChild('form_name') name: ElementRef
+
+  submitName() {
+    alert(this.name.nativeElement.value)
   }
 }
